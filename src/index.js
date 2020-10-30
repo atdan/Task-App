@@ -23,5 +23,19 @@ const myFunction = async () => {
     const data = jwt.verify(token, 'thisismynewcourse')
     console.log(data)
 }
+const Task = require('./models/task')
+const User = require('./models/user')
 
+const main = async () => {
+    // const task = await Task.findById('5c2e505a3253e18a43e612e6')
+    // await task.populate('owner').execPopulate()
+    // console.log(task.owner)
+
+    
+    const user = await User.findById('5f9b3fd4930ce7415514e0c1')
+    await user.populate('tasks').execPopulate()
+    console.log(user.tasks)
+}
+
+main()
 myFunction()
